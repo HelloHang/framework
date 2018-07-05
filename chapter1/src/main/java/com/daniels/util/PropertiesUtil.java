@@ -16,6 +16,7 @@ public class PropertiesUtil {
 
   private final static Logger LOG = LoggerFactory.getLogger(PropertiesUtil.class);
 
+  private static Properties properties = loadProperties("config.properties");
 
   public static Properties loadProperties(String fileName) {
     Properties properties = null;
@@ -41,19 +42,19 @@ public class PropertiesUtil {
     return properties;
   }
 
-  public static String getString(Properties properties, String key) {
-    return getString(properties, key, StringUtils.EMPTY);
+  public static String getString(String key) {
+    return getString(key, StringUtils.EMPTY);
   }
 
-  public static String getString(Properties properties, String key, String defaultValue) {
+  public static String getString(String key, String defaultValue) {
     return properties.getProperty(key, defaultValue);
   }
 
-  public static int getInt(Properties properties, String key) {
-    return getInt(properties, key, 0);
+  public static int getInt(String key) {
+    return getInt(key, 0);
   }
 
-  public static int getInt(Properties properties, String key, int defaultValue) {
+  public static int getInt(String key, int defaultValue) {
     int value = defaultValue;
     if (properties.containsKey(key)) {
       value = CastUtil.castInt(properties.getProperty(key));
@@ -61,11 +62,11 @@ public class PropertiesUtil {
     return value;
   }
 
-  public static boolean getBoolean(Properties properties, String key) {
-    return getBoolean(properties, key, false);
+  public static boolean getBoolean(String key) {
+    return getBoolean(key, false);
   }
 
-  public static boolean getBoolean(Properties properties, String key, boolean defaultValue) {
+  public static boolean getBoolean(String key, boolean defaultValue) {
     boolean value = defaultValue;
     if (properties.containsKey(key)) {
       value = CastUtil.castBoolean(properties.getProperty(key));
